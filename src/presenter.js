@@ -1,23 +1,25 @@
 import impuesto from "./impuesto";
 
 const form = document.querySelector("#totalizador-form");
-
 const cantidad = document.querySelector("#cantidad-item");
-const div_cantidad = document.querySelector("#cantidad-item-div");
-
 const precio = document.querySelector("#precio-item");
-const div_precio = document.querySelector("#precio-item-div");
-
 const codigo_estado = document.querySelector("#codigo-estado");
+
+const div_cantidad = document.querySelector("#cantidad-item-div");
+const div_precio = document.querySelector("#precio-item-div");
 const div_codigo_estado = document.querySelector("#codigo-estado-div"); 
+const div_precio_neto = document.querySelector("#precio-neto-div");
 
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  var cantidad_impuesto = impuesto(codigo_estado.value)
+  var precio_neto = precio.value * cantidad.value;
+
   div_cantidad.innerHTML = "<p> Cantidad de item: " + cantidad.value + "</p>";
   div_precio.innerHTML = "<p> Precio de item: " + precio.value + "</p>";
-  var cantidad_impuesto = impuesto(codigo_estado.value)
   div_codigo_estado.innerHTML = "<p> Codigo del Estado de "+ codigo_estado.value +": " + cantidad_impuesto + "%</p>";
+  div_precio_neto.innerHTML = "<p> Precio Neto: " + precio_neto + "</p>";
 });
 
