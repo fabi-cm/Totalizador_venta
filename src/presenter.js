@@ -1,4 +1,4 @@
-import sumar from "./sumador";
+import impuesto from "./impuesto";
 
 const form = document.querySelector("#totalizador-form");
 
@@ -17,5 +17,7 @@ form.addEventListener("submit", (event) => {
 
   div_cantidad.innerHTML = "<p> Cantidad de item: " + cantidad.value + "</p>";
   div_precio.innerHTML = "<p> Precio de item: " + precio.value + "</p>";
-  div_codigo_estado.innerHTML = "<p> Codigo del Estado de "+ codigo_estado.value + "</p>";
+  var cantidad_impuesto = impuesto(codigo_estado.value)
+  div_codigo_estado.innerHTML = "<p> Codigo del Estado de "+ codigo_estado.value +": " + cantidad_impuesto + "%</p>";
 });
+
